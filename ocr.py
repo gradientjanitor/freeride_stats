@@ -57,16 +57,16 @@ def try_int_cast(val):
 
 
 def main(video_file):
-    #try:
-    #    shutil.rmtree("pngs/")
-    #except:
-    #    print("pngs doesn't exist, how great!")
+    try:
+        shutil.rmtree("pngs/")
+    except:
+        print("pngs doesn't exist, how great!")
         
     # make the pngs directory
-    # os.mkdir("pngs/")
+    os.mkdir("pngs/")
 
     # run ffmpeg, grabbing 1 frame per second and downsample to 640 x whatever
-    # subprocess.run(f"ffmpeg -i {video_file} -r 1 -vf scale=640:-1 pngs/out%04d.png".split())
+    subprocess.run(f"ffmpeg -i {video_file} -r 1 -vf scale=640:-1 pngs/out%04d.png".split())
 
     # instantiate the ocr
     reader = easyocr.Reader(["en"])
